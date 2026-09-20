@@ -1,0 +1,6 @@
+{
+  "description": "as400_test",
+  "objlib": "BA032",
+  "curlib": "BA032",
+  "compileCommand": "makei compile -f {filename}"
+}
