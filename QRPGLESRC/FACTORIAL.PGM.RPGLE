@@ -1,5 +1,6 @@
 **FREE
 // Calculates the Factorial of an entered number
+// e.g. CALL FACTORIAL PARM('5')
 
 Dcl-Pi *N;
   i_num Char(5);

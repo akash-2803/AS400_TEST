@@ -1,7 +1,8 @@
 **FREE
 // Prints the multiplication table (1-10) of an entered number
+// e.g. CALL TABLE PARM('17')
 Dcl-Pi *N;
-  inParm Packed(15:5);
+  i_num Char(15);
 End-Pi;
 
 Dcl-S num     Packed(7:0);
@@ -9,7 +10,11 @@ Dcl-S i       Int(5);
 Dcl-S result  Packed(9:0);
 Dcl-S outLine Varchar(50);
 
-num = inParm;
+monitor;
+  num = %int(%trim(i_num));
+on-error;
+  num = 0;
+endmon; 
 
 outLine = '';
 i = 1;

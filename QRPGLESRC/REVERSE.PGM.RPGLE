@@ -1,5 +1,7 @@
 **FREE
 // Reverses an entered string
+// e.g. CALL REVERSE PARM('Hello World')
+
 Dcl-Pi *N;
   inParm Char(32);
 End-Pi;

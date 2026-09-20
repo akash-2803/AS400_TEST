@@ -15,8 +15,7 @@ Dcl-S n       Int(5);
 Dcl-S i       Int(5);
 Dcl-S max     Packed(9:0);
 Dcl-S min     Packed(9:0);
-Dcl-S outLine1 Varchar(200);
-Dcl-S outLine2 Varchar(50);
+Dcl-S outLine Varchar(50);
 
 // work is one byte longer than inParm so its last byte is always a blank
 work = inParm;
@@ -67,8 +66,7 @@ Dow i <= n;
   i += 1;
 Enddo;
 
-outLine1 = 'Max-' + %trim(%char(max)) + ', Min-' + %trim(%char(min));
-outLine2 = %subst(outLine1:1:50);
-Dsply outLine2;
+outLine = 'Max-' + %trim(%char(max)) + ', Min-' + %trim(%char(min));
+Dsply outLine;
 
 *INLR = *On;
