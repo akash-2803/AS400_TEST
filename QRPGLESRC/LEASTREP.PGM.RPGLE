@@ -26,18 +26,20 @@ upperStr = %xlate('abcdefghijklmnopqrstuvwxyz':'ABCDEFGHIJKLMNOPQRSTUVWXYZ':inPa
 len = %len(%trimr(upperStr));
 
 // Build a table of the distinct characters and how often each one occurs
-For i = 1 to len;
+i = 1;
+Dow i <= len;
   chr = %subst(upperStr:i:1);
 
   if chr <> ' ';
     found = *Off;
-    For j = 1 to n;
+    j = 1;
+    Dow j <= n and not found;
       if chars(j) = chr;
         cnt(j) += 1;
         found = *On;
-        Leave;
       endif;
-    Endfor;
+      j += 1;
+    Enddo;
 
     if not found;
       n += 1;
@@ -45,7 +47,8 @@ For i = 1 to len;
       cnt(n) = 1;
     endif;
   endif;
-Endfor;
+  i += 1;
+Enddo;
 
 if n < 1;
   Dsply 'Pass a string with at least one character';
@@ -54,17 +57,21 @@ if n < 1;
 endif;
 
 minCnt = cnt(1);
-For j = 2 to n;
+j = 2;
+Dow j <= n;
   if cnt(j) < minCnt;
     minCnt = cnt(j);
   endif;
-Endfor;
+  j += 1;
+Enddo;
 
-For j = 1 to n;
+j = 1;
+Dow j <= n;
   if cnt(j) = minCnt;
     list += chars(j);
   endif;
-Endfor;
+  j += 1;
+Enddo;
 
 outLine = 'Least repeated (x' + %char(minCnt) + '): ' + list;
 Dsply outLine;

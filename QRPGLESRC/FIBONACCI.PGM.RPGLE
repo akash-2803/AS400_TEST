@@ -30,7 +30,8 @@ if count < 1 or count > 90;
 endif;
 
 // Terms are packed onto lines of up to 50 characters since Dsply shows 52 at most
-For i = 1 to count;
+i = 1;
+Dow i <= count;
   term = %char(a);
 
   if %len(line) = 0;
@@ -45,7 +46,8 @@ For i = 1 to count;
   eval next = a + b;
   a = b;
   b = next;
-Endfor;
+  i += 1;
+Enddo;
 
 if %len(line) > 0;
   Dsply line;
